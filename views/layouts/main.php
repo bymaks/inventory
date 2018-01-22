@@ -35,27 +35,35 @@ AppAsset::register($this);
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
     ]);
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => [
-            ['label' => 'Учет', 'url' => ['/tools/inventory']],
-            ['label' => 'Инструменты', 'url' => ['/tools']],
-            ['label' => 'Требуют учета', 'url' => ['/tools/tools-report']],
-            ['label' => 'Пользователи', 'url' => ['/users']],
-            Yii::$app->user->isGuest ? (
+    if(Yii::$app->user->isGuest){
+        echo Nav::widget([
+            'options' => ['class' => 'navbar-nav navbar-right'],
+            'items' => [
                 ['label' => 'Вход', 'url' => ['/site/login']]
-            ) : (
-                '<li>'
-                . Html::beginForm(['/site/logout'], 'post')
-                . Html::submitButton(
-                    'Выход (' . Yii::$app->user->identity->name . ')',
-                    ['class' => 'btn btn-link logout']
-                )
-                . Html::endForm()
-                . '</li>'
-            )
-        ],
-    ]);
+            ],
+        ]);
+    }
+    else{
+        echo Nav::widget([
+            'options' => ['class' => 'navbar-nav navbar-right'],
+            'items' => [
+                ['label' => 'Учет', 'url' => ['/tools/inventory']],
+                ['label' => 'Инструменты', 'url' => ['/tools']],
+                ['label' => 'Требуют учета', 'url' => ['/tools/tools-report']],
+                ['label' => 'Пользователи', 'url' => ['/users']],
+
+                    '<li>'
+                    . Html::beginForm(['/site/logout'], 'post')
+                    . Html::submitButton(
+                        'Выход (' . Yii::$app->user->identity->name . ')',
+                        ['class' => 'btn btn-link logout']
+                    )
+                    . Html::endForm()
+                    . '</li>'
+
+            ],
+        ]);
+    }
     NavBar::end();
     ?>
 
