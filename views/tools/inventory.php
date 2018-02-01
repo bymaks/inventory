@@ -27,6 +27,16 @@ $this->params['breadcrumbs'][] = $this->title;
                 </div><!-- /input-group -->
             </div><!-- /.col-lg-6 -->
         </div><!-- /.row -->
+        <section class="controls">
+            <div style="float:left;">
+                <button id="camera-me" >Заупстить распознавание номера</button>
+            </div>
+            <div id="video-preview">
+                <button id="stop-decode" >Остановить</button>
+            </div>
+        </section>
+        <div id="interactive" class="viewport"></div>
+
 
         <?php
     }

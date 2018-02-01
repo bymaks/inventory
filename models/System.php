@@ -12,7 +12,7 @@ class System extends \yii\db\ActiveRecord
         print_r($t);
         echo "</pre>";
     }
-    public static function sendSms($phone, $message){
+    public static function sendSmsMTS($phone, $message){
         $phone = '7'.preg_replace('/\D|(\G7)|(\G8)/','',$phone);
         // Загрузка данных;
         $c = curl_init(Yii::$app->params['smsUrl']);
@@ -27,7 +27,7 @@ class System extends \yii\db\ActiveRecord
 
     }
 
-    public static function sendSmsBeeline($phone, $message){
+    public static function sendSms($phone, $message){
         $phone = '7'.preg_replace('/\D|(\G7)|(\G8)/','',$phone);
 
         $c = curl_init(Yii::$app->params['beeline']['sms']['hostname']);

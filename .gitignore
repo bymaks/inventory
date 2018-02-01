@@ -32,4 +32,5 @@ phpunit.phar
 /phpunit.xml
 
 tests/_output/*
+/web/npm/
 tests/_support/_generated
