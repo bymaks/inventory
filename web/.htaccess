@@ -18,3 +18,8 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 # otherwise forward the request to my.php
 RewriteRule . index.php
+
+AuthType Basic
+AuthName "Private zone. Only for administrator!"
+AuthUserFile  /var/www/inventory/web/.htpasswd
+require valid-user
