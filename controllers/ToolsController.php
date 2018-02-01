@@ -149,6 +149,10 @@ class ToolsController extends Controller
         if(!empty(Yii::$app->request->get('store')) && is_numeric(Yii::$app->request->get('store'))){
             $storeSelect = ToolsStores::find()->where(['id'=>Yii::$app->request->get('store')])->one();
         }
+        $this->view->registerJsFile('/js/jquery.min.js');
+        $this->view->registerJsFile('/js/script.js');
+        $this->view->registerJsFile('/js/quagga.js');
+        $this->view->registerJsFile('/js/linecodereader.js');
 
         return $this->render('inventory',[
             'storeSelect'=>$storeSelect,

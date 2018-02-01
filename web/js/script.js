@@ -41,19 +41,25 @@ function sendTool() {
     });
     return false;
 }
+function sendCode() {
+    $('#ToolId').attr('disabled','disabled');
+    $('#ToolId').attr('count',(parseInt($('#ToolId').attr('count'))+1));
+    console.log('Disabled');
+    if($('#ToolId').val().length>0){
+        sendTool();
+    }
+    return false;
+}
 $(document).ready(function(){
-    $('body').click(function(){
-        $('#ToolId').focus();
-        console.log('setFocus');
-    });
+    // $('body').click(function(){
+    //     $('#ToolId').focus();
+    //     console.log('setFocus');
+    // });
+
+
 
     $(document).on('click','#sendBtn',function () {
-        $('#ToolId').attr('disabled','disabled');
-        $('#ToolId').attr('count',(parseInt($('#ToolId').attr('count'))+1));
-        console.log('Disabled');
-        if($('#ToolId').val().length>0){
-            sendTool();
-        }
+        sendCode();
         return false;
     });
 
@@ -68,12 +74,7 @@ $(document).ready(function(){
         //console.log('keyCode'+e.keyCode);
 
         if(enter==true) {
-            $(this).attr('disabled','disabled');
-            $(this).attr('count',(parseInt($(this).attr('count'))+1));
-            console.log('Disabled');
-            if($(this).val().length>0){
-                sendTool();
-            }
+            sendCode();
             return false;
         }
     });
